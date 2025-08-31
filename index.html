@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lista de tarefas</title>
+
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: grid;
+            place-items: center top;
+            min-height: 100vh;
+            background-color: lightgreen;
+        }
+        section {
+            padding: 5px 100px;
+        }
+        div {
+            background-color: yellow;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            background-color: darkblue;
+            color: white;
+        }
+        input {
+            padding: 2px;
+            border-radius: 4px;
+            border: none;
+            margin-right: 5px;
+        }
+        input:hover {
+            cursor: help;
+        }
+        button {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: greenyellow;
+            cursor:progress;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <div>
+    <h1>tarefas</h1>
+    <ul></ul>
+    <input>
+    <button onclick="add()">adicionar</button>
+        </div>
+    </section>
+    <script>
+        const tarefas = ["teste"]
+       
+        function add() {
+            const input = document.querySelector("input")
+            const tarefa = input.value
+            tarefas.push(tarefa)
+            input.value = ""
+            render()
+        }
+        function render() {
+            const ul = document.querySelector("ul")
+            ul.innerHTML = null
+
+            tarefas.forEach(function (tarefa){ 
+                const li = document.createElement("li")
+                li.innerText = tarefa
+                ul.appendChild(li)
+            })
+        }
+        render()
+    </script>
+</body>
+
+</html>
