@@ -48,6 +48,9 @@
             background-color: greenyellow;
             cursor:progress;
         }
+        ul{
+            color: blue;
+        }
 
     </style>
 </head>
@@ -59,19 +62,24 @@
     <ul></ul>
     <input>
     <button onclick="add()">Adicionar</button>
+    <button onclick="mn()">remover</button>
         </div>
     </section>
     <script>
         const tarefas = ["teste"]
-       
+
+        function mn() {
+            tarefas.pop();
+            tela();
+        }
         function add() {
             const input = document.querySelector("input")
             const tarefa = input.value
             tarefas.push(tarefa)
             input.value = ""
-            render()
+            tela()
         }
-        function render() {
+        function tela() {
             const ul = document.querySelector("ul")
             ul.innerHTML = null
 
@@ -79,9 +87,10 @@
                 const li = document.createElement("li")
                 li.innerText = tarefa
                 ul.appendChild(li)
-            })
+            }
+        )
         }
-        render()
+        tela()
     </script>
 </body>
 
